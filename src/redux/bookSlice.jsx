@@ -19,7 +19,6 @@ const bookSlice = createSlice({
     },
     reducers: {
         sortByTitle: (state, action) => {
-            console.log('action:', action);
             state.filteredBooks = state.books.filter((book) => book.title == action.payload);
         },
         sortByAuthor: (state, action) => {
