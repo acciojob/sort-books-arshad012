@@ -1,0 +1,28 @@
+
+.bookcard {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    padding-inline: 20px;
+}
+
+.bookDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0;
+}
+
+.bookDetails p {
+    margin: 0;
+}
+
+.author_publisher {}
+
+.filter_section {
+    margin-left: 20px;
+}
+
+.filter_section_container {
+    display: flex;
+}
