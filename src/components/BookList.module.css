@@ -1,4 +1,10 @@
 
+.header {
+    text-align: center;
+    color: teal;
+    font-size: 2rem;
+    font-weight: 500;
+}
 .bookcard {
     display: flex;
     gap: 30px;

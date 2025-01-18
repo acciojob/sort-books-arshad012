@@ -5,7 +5,7 @@ import { fetchBooks } from "../redux/bookSlice";
 import styles from './BookList.module.css';
 import { sortByTitle, sortByAuthor, sortByPublisher } from '../redux/bookSlice';
 
-const BookList = () => {
+const BooksList = () => {
     const { books, filteredBooks, status, error } = useSelector(state => state.books);
     const dispatch = useDispatch();
     let Titles = [];
@@ -53,7 +53,7 @@ const BookList = () => {
 
     return status == 'idle' ? <div><h1 style={{ textAlign: 'center' }}>Data will be fetched</h1></div> : status == 'loading' ? <div><h1 style={{ textAlign: 'center' }}>Loading...</h1></div> : (
         <div>
-            <h2 style={{ textAlign: 'center', color: 'teal' }}>Book List</h2>
+            <header className={styles.header}>Books List</header>
             <div className={styles.filter_section_container}>
                 <div className={styles.filter_section}>
                     <div className="dropdown-center">
@@ -83,7 +83,7 @@ const BookList = () => {
                 {/*  */}
                 <div className={styles.filter_section}>
                     <div className="dropdown-center">
-                        <button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Sort books by title</button>
+                        <button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Sort books by publisher</button>
                         <ul className="dropdown-menu">
                             {
                                 Publishers.map((publisher) => (
@@ -114,4 +114,4 @@ const BookList = () => {
     )
 }
 
-export default BookList;
+export default BooksList;
