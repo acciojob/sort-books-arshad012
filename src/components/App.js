@@ -8,9 +8,12 @@ import { store } from "../redux/store";
 
 const App = () => {
   return (
-    <Provider store={store}>
-        <BooksList />
-    </Provider>
+    <>
+      <header className='header'>Books List"</header>
+      <Provider store={store}>
+          <BooksList />
+      </Provider>
+    </>
   )
 }
 
