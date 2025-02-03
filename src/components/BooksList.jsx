@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchBooks } from "../redux/bookSlice";
+import "regenerator-runtime/runtime";
+// import { fetchBooks } from "../redux/bookSlice";
 
 import styles from './BookList.module.css';
 import { sortByTitle, sortByAuthor, sortByPublisher } from '../redux/bookSlice';
+import { addData } from "../redux/bookSlice";
+
+
+const fetchBooks = async () => {
+    const res = await fetch('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=2efxSrTRkpSbA1iC4QS8SC8P0hd6Pj2V');
+    const data = await res.json();
+    return data;
+
+    // const {results, status} = data;
+    // state.status = status;
+    // state.books = results.books;
+    // state.filteredBooks = results.books;
+}
 
 const BooksList = () => {
     const { books, filteredBooks, status, error } = useSelector(state => state.books);
@@ -13,7 +27,12 @@ const BooksList = () => {
     let Publishers = [];
 
     useEffect(() => {
-        dispatch(fetchBooks());
+        fetchBooks().then((data) => {
+            console.log('data:', data);
+            dispatch(
+                addData(data.results.books)
+            );
+        })
     }, []);
 
     if (status == 'OK') {
@@ -53,7 +72,7 @@ const BooksList = () => {
 
     return (
         <>
-            {/* <header className={styles.header}>Books List"</header> */}
+            <h1 className={styles.header}>Books List</h1>
             {
                 status == 'OK' &&
                 <div className={styles.main}>

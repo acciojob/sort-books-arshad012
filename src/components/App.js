@@ -9,7 +9,6 @@ import { store } from "../redux/store";
 const App = () => {
   return (
     <>
-      <header className='header'>Books List"</header>
       <Provider store={store}>
           <BooksList />
       </Provider>
